@@ -2,7 +2,15 @@ require('dotenv').config()
 
 const keys = {
   API: {
-    SERVER_PORT: process.env.SERVER_PORT || 8010
+    SERVER_PORT: process.env.SERVER_PORT
+  },
+  DATABASE: {
+    HOST: process.env.DATABASE_HOST,
+    PORT: process.env.DATABASE_PORT,
+    NAME: process.env.DATABASE_NAME,
+    USER: process.env.DATABASE_USER,
+    PASSWORD: process.env.DATABASE_PASSWORD,
+    DIALECT: process.env.DATABASE_DIALECT
   }
 }
 
