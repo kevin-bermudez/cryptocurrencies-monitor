@@ -1,0 +1,1 @@
+Seeders for sequelize
