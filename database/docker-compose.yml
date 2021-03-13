@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  db-cryptocurrencies-monitor:
+    image: mysql:5.7
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: cryptocurrencies_monitor
+      MYSQL_USER: cryptocurrencies_monitor
+      MYSQL_PASSWORD: cryptocurrencies_monitor
+    ports:
+      - '3307:3306'
