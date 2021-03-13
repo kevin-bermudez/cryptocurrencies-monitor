@@ -16,8 +16,6 @@ app.use(
 //middleware parser json requests
 app.use(express.json())
 
-//ROUTES_V1(app)
-
 //si no coincide con ninguna ruta definida pasa por acá
 app.use((req, res, next) => {
   return responseHttp(res, 404)
