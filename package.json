@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/api/server.js",
-    "test": "npm test",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "db:migrations": "npx sequelize db:migrate",
     "doc:api": "node src/api/generateDoc"
   },
