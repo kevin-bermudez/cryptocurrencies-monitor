@@ -1,5 +1,6 @@
 module.exports = () => {
   return {
-    rootDir: __dirname + '/test'
+    rootDir: __dirname,
+    watchPathIgnorePatterns: ['/database/', '/node_modules/']
   }
 }

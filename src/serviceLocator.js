@@ -16,7 +16,7 @@ module.exports = () => {
       dependencies[name] = factory && factory(serviceLocator)
 
       if (!dependencies[name]) {
-        throw new Error('No existe este módulo en el SL')
+        throw new Error('module not found')
       }
     }
     return dependencies[name]
