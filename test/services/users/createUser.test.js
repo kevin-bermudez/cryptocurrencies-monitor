@@ -4,12 +4,14 @@ const codeErrors = require('../../../src/exceptions/codeErrors')
 const serviceLocator = require('../../../src/serviceLocator')()
 const passwordIsValid = require('../../../src/services/users/passwordIsValid')
 const favoriteCurrencyIsValid = require('../../../src/services/users/favoriteCurrencyIsValid')
+const favoriteCurrencies = require('../../../src/utils/enums/favoriteCurrencies')
 const handleCryptText = require('../../../src/utils/handleCryptText')
 serviceLocator.register('exceptions.serviceError', serviceExceptions)
 serviceLocator.register('exceptions.codeErrors', codeErrors)
 serviceLocator.register('services.passwordIsValid', passwordIsValid)
 serviceLocator.register('services.favoriteCurrencyIsValid', favoriteCurrencyIsValid)
 serviceLocator.register('utils.handleCryptText', handleCryptText)
+serviceLocator.register('utils.favoriteCurrencies', favoriteCurrencies)
 serviceLocator.register('filters.user', {
   get: jest.fn().mockResolvedValue({
     name: 'test',
@@ -19,7 +21,7 @@ serviceLocator.register('filters.user', {
     favoriteCurrency: 'Euro'
   })
 })
-serviceLocator.register('userRepository.createUser', jest.fn())
+serviceLocator.register('repositories.user', { createUser: jest.fn() })
 
 describe('service create user', () => {
   test('password with less than 8 characters', async () => {

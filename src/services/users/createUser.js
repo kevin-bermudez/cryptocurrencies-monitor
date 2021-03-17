@@ -1,6 +1,6 @@
 const createUser = async (serviceLocator, { name, lastName, username, password, favoriteCurrency }) => {
   const serviceError = serviceLocator.get('exceptions.serviceError')
-  const userByUsername = serviceLocator.get('filters.user').get()
+  const userByUsername = await serviceLocator.get('filters.user')().and('username', username).get()
 
   if (userByUsername.length) {
     throw new serviceError(serviceLocator.get('exceptions.codeErrors').PAYLOAD, '', {
@@ -19,7 +19,7 @@ const createUser = async (serviceLocator, { name, lastName, username, password, 
       favoriteCurrency: 'the selected currency is not valid'
     })
   }
-
+  console.log('fa curr is', favoriteCurrency)
   try {
     const newUser = {
       name,
@@ -29,7 +29,7 @@ const createUser = async (serviceLocator, { name, lastName, username, password, 
       favoriteCurrency
     }
 
-    await serviceLocator.get('userRepository.createUser')(newUser)
+    await serviceLocator.get('repositories.user').createUser(newUser)
     return true
   } catch (error) {
     console.log('error is', error)

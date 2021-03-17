@@ -16,7 +16,7 @@ module.exports = () => {
       dependencies[name] = factory && factory(serviceLocator)
 
       if (!dependencies[name]) {
-        throw new Error('module not found')
+        throw new Error(`module not found ${name}`)
       }
     }
     return dependencies[name]

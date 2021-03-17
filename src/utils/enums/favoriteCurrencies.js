@@ -1,7 +1,3 @@
-const favoriteCurrencies = Object.freeze({
-  EUR: 'Euro',
-  USD: 'Dólar',
-  ARS: 'Peso Argentino'
-})
+const favoriteCurrencies = ['Euro', 'Dólar', 'Peso Argentino']
 
 module.exports = favoriteCurrencies
