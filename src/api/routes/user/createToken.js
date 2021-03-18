@@ -19,7 +19,7 @@ const createUser = (router, serviceLocator) => {
           userName,
           password
         })
-        serviceLocator.get('api.responseHttp')(res, 201, 'Token created', resultWithToken)
+        return serviceLocator.get('api.responseHttp')(res, 201, 'Token created', resultWithToken)
       } catch (error) {
         next(error)
       }

@@ -4,14 +4,16 @@ const getAllCryptocurrencies = async (serviceLocator, favoriteCurrency) => {
   try {
     const urlRequest = `${serviceLocator.get('config.keys').EXTERNAL_SERVICES.URL_GECKO}/coins/markets`
     const resultGecko = await serviceLocator.get('utils.requestHttp')(urlRequest, 'get', {
-      vs_currency: favoriteCurrency,
-      order: 'market_cap_desc',
-      per_page: 100,
-      page: 1,
-      sparkline: false
+      params: {
+        vs_currency: favoriteCurrency,
+        order: 'market_cap_desc',
+        per_page: 100,
+        page: 1,
+        sparkline: false
+      }
     })
 
-    const formattedCurrencies = resultGecko.map(currency => {
+    const formattedCurrencies = resultGecko.data.map(currency => {
       return {
         symbol: currency.symbol,
         price: currency.current_price,
@@ -23,6 +25,7 @@ const getAllCryptocurrencies = async (serviceLocator, favoriteCurrency) => {
 
     return formattedCurrencies
   } catch (error) {
+    console.log('error services', error)
     serviceLocator.get('utils.handleErrorsServices')(error)
   }
 }

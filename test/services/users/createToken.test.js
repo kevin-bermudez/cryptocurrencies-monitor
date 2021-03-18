@@ -23,7 +23,7 @@ describe('service create token', () => {
 
   test('created token OK', async () => {
     const result = await createToken(serviceLocator, {
-      username: 'test',
+      userName: 'test',
       password: 'test1234'
     })
     expect(result).toHaveProperty('token')

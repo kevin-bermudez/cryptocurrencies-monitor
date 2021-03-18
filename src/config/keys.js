@@ -14,7 +14,7 @@ const keys = {
   },
   PRIVATE_KEY_TOKEN: process.env.PRIVATE_KEY_TOKEN,
   EXTERNAL_SERVICES: {
-    URL_GECKO: 'https://coingecko.com/api/documentations/v3'
+    URL_GECKO: 'https://api.coingecko.com/api/v3'
   }
 }
 
