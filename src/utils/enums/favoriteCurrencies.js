@@ -1,3 +1,3 @@
-const favoriteCurrencies = ['Euro', 'Dólar', 'Peso Argentino']
+const favoriteCurrencies = ['EUR', 'USD', 'ARS']
 
 module.exports = favoriteCurrencies
