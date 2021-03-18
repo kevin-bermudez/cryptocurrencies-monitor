@@ -11,7 +11,8 @@ const keys = {
     USER: process.env.DATABASE_USER,
     PASSWORD: process.env.DATABASE_PASSWORD,
     DIALECT: process.env.DATABASE_DIALECT
-  }
+  },
+  PRIVATE_KEY_TOKEN: process.env.PRIVATE_KEY_TOKEN
 }
 
 module.exports = keys
