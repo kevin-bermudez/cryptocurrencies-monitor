@@ -13,7 +13,7 @@ const userModel = database.define(
     },
     name: { type: Sequelize.STRING(100), allowNull: false },
     lastName: { type: Sequelize.STRING(100), allowNull: false, field: 'last_name' },
-    username: { type: Sequelize.STRING(100), allowNull: false },
+    userName: { type: Sequelize.STRING(100), allowNull: false },
     password: { type: Sequelize.STRING(60), allowNull: false },
     favoriteCurrency: {
       type: Sequelize.ENUM(favoriteCurrencies),

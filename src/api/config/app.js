@@ -18,7 +18,7 @@ routes(app)
 
 //si no coincide con ninguna ruta definida pasa por acá
 app.use((req, res, next) => {
-  return responseHttp(res, 404)
+  return responseHttp(res, 404, 'Route not found')
 })
 
 app.use(errorHandlerApi(serviceLocator()))

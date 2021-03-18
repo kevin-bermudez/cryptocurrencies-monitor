@@ -3,11 +3,13 @@ const exceptionsInjector = require('./exceptions')
 const repositoriesInjector = require('./repositories')
 const servicesInjector = require('./services')
 const apiInjector = require('./api')
+const utilsInjector = require('./utils')
 
 module.exports = () => {
   exceptionsInjector(serviceLocator)
   repositoriesInjector(serviceLocator)
   servicesInjector(serviceLocator)
   apiInjector(serviceLocator)
+  utilsInjector(serviceLocator)
   return serviceLocator
 }

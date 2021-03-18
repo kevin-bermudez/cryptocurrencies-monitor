@@ -24,7 +24,6 @@ const createUser = (router, serviceLocator) => {
         })
         serviceLocator.get('api.responseHttp')(res, 201)
       } catch (error) {
-        console.log(error.message)
         next(error)
       }
     }
