@@ -1,30 +1,30 @@
-const createUser = async (serviceLocator, { name, lastName, username, password, favoriteCurrency }) => {
-  const serviceError = serviceLocator.get('exceptions.serviceError')
-  const userByUsername = await serviceLocator.get('filters.user')().and('username', username).get()
+const createUser = async (serviceLocator, { name, lastName, userName, password, favoriteCurrency }) => {
+  const customError = serviceLocator.get('exceptions.customError')
+  const userByUsername = await serviceLocator.get('filters.user')().and('username', userName).get()
 
   if (userByUsername.length) {
-    throw new serviceError(serviceLocator.get('exceptions.codeErrors').PAYLOAD, '', {
+    throw new customError(serviceLocator.get('exceptions.codeErrors').PAYLOAD, '', {
       username: 'username already exists'
     })
   }
 
   if (!serviceLocator.get('services.passwordIsValid')(password)) {
-    throw new serviceError(serviceLocator.get('exceptions.codeErrors').PAYLOAD, '', {
+    throw new customError(serviceLocator.get('exceptions.codeErrors').PAYLOAD, '', {
       password: 'the password must be longer than 8 characters'
     })
   }
 
   if (!serviceLocator.get('services.favoriteCurrencyIsValid')(favoriteCurrency)) {
-    throw new serviceError(serviceLocator.get('exceptions.codeErrors').PAYLOAD, '', {
+    throw new customError(serviceLocator.get('exceptions.codeErrors').PAYLOAD, '', {
       favoriteCurrency: 'the selected currency is not valid'
     })
   }
-  console.log('fa curr is', favoriteCurrency)
+
   try {
     const newUser = {
       name,
       lastName,
-      username,
+      userName,
       password: serviceLocator.get('utils.handleCryptText').createHash(password),
       favoriteCurrency
     }
@@ -32,8 +32,7 @@ const createUser = async (serviceLocator, { name, lastName, username, password, 
     await serviceLocator.get('repositories.user').createUser(newUser)
     return true
   } catch (error) {
-    console.log('error is', error)
-    throw new serviceError(serviceLocator.get('exceptions.codeErrors').UNEXPECTED)
+    throw new customError(serviceLocator.get('exceptions.codeErrors').UNEXPECTED)
   }
 }
 

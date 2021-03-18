@@ -1,8 +1,8 @@
-const serviceExceptions = require('../../../exceptions/service')
+const serviceExceptions = require('../../../exceptions/customError')
 const codeErrors = require('../../../exceptions/codeErrors')
 
 const exceptionsInjector = serviceLocator => {
-  serviceLocator.register('exceptions.serviceError', serviceExceptions)
+  serviceLocator.register('exceptions.customError', serviceExceptions)
   serviceLocator.register('exceptions.codeErrors', codeErrors)
 }
 

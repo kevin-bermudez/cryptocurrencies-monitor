@@ -4,6 +4,7 @@ const corsApi = require('./corsApi')
 const docsApi = require('./docsApi')
 const serviceLocator = require('./dependencyInjector')
 const routes = require('../routes')
+const errorHandlerApi = require('./errorHandlerApi')
 
 const app = express()
 corsApi(app)
@@ -19,5 +20,7 @@ routes(app)
 app.use((req, res, next) => {
   return responseHttp(res, 404)
 })
+
+app.use(errorHandlerApi(serviceLocator()))
 
 module.exports = app
