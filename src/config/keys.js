@@ -12,7 +12,10 @@ const keys = {
     PASSWORD: process.env.DATABASE_PASSWORD,
     DIALECT: process.env.DATABASE_DIALECT
   },
-  PRIVATE_KEY_TOKEN: process.env.PRIVATE_KEY_TOKEN
+  PRIVATE_KEY_TOKEN: process.env.PRIVATE_KEY_TOKEN,
+  EXTERNAL_SERVICES: {
+    URL_GECKO: 'https://api.coingecko.com/api/v3'
+  }
 }
 
 module.exports = keys

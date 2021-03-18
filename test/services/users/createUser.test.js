@@ -47,7 +47,7 @@ describe('service create user', () => {
       lastName: 'test',
       username: 'test',
       password: '12345678',
-      favoriteCurrency: 'Euro'
+      favoriteCurrency: 'EUR'
     })
     expect(result).toBe(true)
   })

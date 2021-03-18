@@ -22,7 +22,7 @@ const createUser = (router, serviceLocator) => {
           password,
           favoriteCurrency
         })
-        serviceLocator.get('api.responseHttp')(res, 201)
+        return serviceLocator.get('api.responseHttp')(res, 201)
       } catch (error) {
         next(error)
       }
