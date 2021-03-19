@@ -1,10 +1,30 @@
 /**
  * @openapi
- * /:
- *   get:
- *     description: Add user cryptocurrency
- *     responses:
- *       201:
+ * /crypto-currencies:
+ *  post:
+ *   security:
+ *    - bearerAuth: []
+ *   description: Este endpoint asocia una cripto moneda al usuario autenticado al momento de la petición, solo se puede asociar una vez un usuario a una criptomoneda
+ *   parameters:
+ *    - in: body
+ *      schema:
+ *       type: object
+ *       properties:
+ *        cryptoCurrency:
+ *         type: string
+ *         required: true
+ *         example: bitcoin
+ *   responses:
+ *    201:
+ *     content:
+ *      application/json:
+ *       schema:
+ *        type: object
+ *        properties:
+ *         message:
+ *          type: string
+ *          example: Created
+ *
  */
 const createUser = (router, serviceLocator) => {
   const addUserCryptoCurrencySchema = serviceLocator.get('api.schemaAddUserCryptoCurrency')

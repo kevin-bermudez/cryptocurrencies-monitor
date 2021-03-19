@@ -1,10 +1,43 @@
 /**
  * @openapi
- * /:
- *   get:
- *     description: Create a User
- *     responses:
- *       201:
+ * /users:
+ *  post:
+ *   description: Este endpoint crea un usuario
+ *   parameters:
+ *    - in: body
+ *      schema:
+ *       type: object
+ *       properties:
+ *        name:
+ *         type: string
+ *         required: true
+ *        lastName:
+ *         type: string
+ *         required: true
+ *        userName:
+ *         type: string
+ *         required: true
+ *        password:
+ *         type: string
+ *         required: true
+ *        favoriteCurrency:
+ *         type: string
+ *         required: true
+ *         enum:
+ *          - eur
+ *          - usd
+ *          - ars
+ *   responses:
+ *    201:
+ *     content:
+ *      application/json:
+ *       schema:
+ *        type: object
+ *        properties:
+ *         message:
+ *          type: string
+ *          example: Created
+ *
  */
 const createUser = (router, serviceLocator) => {
   const createUserSchema = serviceLocator.get('api.schemaCreateUser')

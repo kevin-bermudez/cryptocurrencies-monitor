@@ -25,7 +25,7 @@ describe('get cryptocurrencies top N', () => {
     ).rejects.toThrow(customError)
   })
 
-  test.only('first element return correct structure', async () => {
+  test('first element return correct structure', async () => {
     serviceLocator.register('services.getAllCryptoCurrencies', mocksGetAllCryptoCurrencies)
     serviceLocator.register('utils.requestHttp', mockGeckoSingleRequest)
 

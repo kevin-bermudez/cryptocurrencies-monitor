@@ -1,7 +1,7 @@
 const createUser = async (serviceLocator, { name, lastName, userName, password, favoriteCurrency }) => {
   try {
     const customError = serviceLocator.get('exceptions.customError')
-    const userByUsername = await serviceLocator.get('services.getUser')(serviceLocator, { username: userName })
+    const userByUsername = await serviceLocator.get('services.getUser')(serviceLocator, { userName })
 
     if (userByUsername.length) {
       throw new customError(serviceLocator.get('exceptions.codeErrors').PAYLOAD, '', {

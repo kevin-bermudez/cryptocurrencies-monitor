@@ -35,6 +35,7 @@
         background: #fafafa;
       }
     </style>
+
   </head>
 
   <body>
@@ -59,5 +60,6 @@
         window.ui = ui
       }
     </script>
+
   </body>
 </html>
