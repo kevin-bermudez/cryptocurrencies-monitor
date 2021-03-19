@@ -6,11 +6,20 @@ generateFileSwaggerUiFromJsDoc(
     definition: {
       openapi: '3.0.0',
       info: {
-        title: 'Test Docs',
+        title: 'Crypto currencies monitor',
         version: '1.0.0'
+      },
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            type: 'http',
+            scheme: 'bearer',
+            bearerFormat: 'JWT'
+          }
+        }
       }
     },
-    apis: [`${apisPath}/routes/*.js`]
+    apis: [`${apisPath}/routes/*.js`, `${apisPath}/routes/**/*.js`]
   },
   path.resolve(__dirname, 'docs')
 )

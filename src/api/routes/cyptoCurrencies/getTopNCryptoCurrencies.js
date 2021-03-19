@@ -1,10 +1,65 @@
 /**
  * @openapi
- * /:
- *   get:
- *     description: Get all crypto currencies
- *     responses:
- *       200:
+ * /crypto-currencies/top:
+ *  get:
+ *   security:
+ *    - bearerAuth: []
+ *   description: Este endpoint retorna el top de las criptomonedas más o menos cotizadas de las elegidas para seguir por el usuario autenticado
+ *   parameters:
+ *    - in: query
+ *      type: number
+ *      name: limit
+ *      required: true
+ *      max: 25
+ *    - in: query
+ *      type: string
+ *      name: order
+ *      enum:
+ *       - ASC
+ *       - DESC
+ *   responses:
+ *    200:
+ *     content:
+ *      application/json:
+ *       schema:
+ *        type: object
+ *        properties:
+ *         message:
+ *          type: string
+ *          example: List top crypto currencies
+ *         data:
+ *          type: object
+ *          properties:
+ *           cryptoCurrencies:
+ *            type: array
+ *            items:
+ *             type: object
+ *             properties:
+ *              symbol:
+ *               type: string
+ *               example: btc
+ *              name:
+ *               type: string
+ *               example: Bitcoin
+ *              image:
+ *               type: string
+ *               example: https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579
+ *              lastUpdated:
+ *               type: date
+ *               example: 2021-03-19T07:47:15.840Z
+ *              prices:
+ *               type: object
+ *               properties:
+ *                eur:
+ *                 type: number
+ *                 example: 123
+ *                usd:
+ *                 type: number
+ *                 example: 123
+ *                ars:
+ *                 type: number
+ *                 example: 123
+ *
  */
 const getAllCryptoCurrencies = (router, serviceLocator) => {
   const getTopNSchema = serviceLocator.get('api.schemaGetTopNCryptoCurrencies')

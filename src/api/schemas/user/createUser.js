@@ -1,4 +1,5 @@
 const schemaBuilder = require('../../../utils/validator')
+const favoriteCurrencies = require('../../../utils/enums/favoriteCurrencies')
 
 module.exports = schemaBuilder()
   .string('name', {
@@ -18,6 +19,7 @@ module.exports = schemaBuilder()
     max: 60
   })
   .string('favoriteCurrency', {
-    required: true
+    required: true,
+    include: favoriteCurrencies
   })
   .build()

@@ -1,10 +1,36 @@
 /**
  * @openapi
- * /:
- *   get:
- *     description: Create a User
- *     responses:
- *       201:
+ * /users/login:
+ *  post:
+ *   description: Este endpoint crea un token para mantener la sesión de un usuario
+ *   parameters:
+ *    - in: body
+ *      schema:
+ *       type: object
+ *       properties:
+ *        userName:
+ *         type: string
+ *         required: true
+ *        password:
+ *         type: string
+ *         required: true
+ *   responses:
+ *    201:
+ *     content:
+ *      application/json:
+ *       schema:
+ *        type: object
+ *        properties:
+ *         message:
+ *          type: string
+ *          example: Token created
+ *         data:
+ *          type: object
+ *          properties:
+ *           token:
+ *             type: string
+ *             example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjE2MTM4NDMzLCJleHAiOjE2MTYyMjQ4MzN9.WpBaffQkvAxFQA5F9Kek6Jh1JOFqmKIY4LX7d3AGA5k
+ *
  */
 const createUser = (router, serviceLocator) => {
   const createTokenSchema = serviceLocator.get('api.schemaCreateToken')
