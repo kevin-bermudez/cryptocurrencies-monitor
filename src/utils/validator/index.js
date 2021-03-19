@@ -1,6 +1,7 @@
 const Joi = require('joi')
 const validateString = require('./validateString')
 const validateAlphanum = require('./validateAlphanum')
+const validateNumber = require('./validateNumber')
 
 const schemaBuilder = () => {
   const schema = {}
@@ -17,6 +18,11 @@ const schemaBuilder = () => {
 
   this.alphanum = (label, options) => {
     schema[label] = validateAlphanum(options)
+    return self
+  }
+
+  this.number = (label, options) => {
+    schema[label] = validateNumber(options)
     return self
   }
 
