@@ -2,7 +2,7 @@ const Joi = require('joi')
 
 const validateString = options => {
   let validator
-  const { min, max, required } = options
+  const { min, max, required, include } = options
 
   validator = Joi.string()
   if (min) {
@@ -13,6 +13,10 @@ const validateString = options => {
   }
   if (required) {
     validator = validator.required()
+  }
+
+  if (include) {
+    validator = validator.valid(...include)
   }
 
   return validator

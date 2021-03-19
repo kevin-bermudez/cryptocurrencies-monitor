@@ -11,7 +11,7 @@ describe('service create user', () => {
         lastName: 'test',
         username: 'test',
         password: 'a',
-        favoriteCurrency: 'EUR'
+        favoriteCurrency: 'eur'
       })
     ).rejects.toThrow(customError)
   })
@@ -23,7 +23,7 @@ describe('service create user', () => {
         lastName: 'test',
         username: 'test',
         password: 'a1234567',
-        favoriteCurrency: 'Peso Colombiano'
+        favoriteCurrency: 'cop'
       })
     ).rejects.toThrow(customError)
   })
@@ -35,7 +35,7 @@ describe('service create user', () => {
         lastName: 'test',
         username: 'test',
         password: '12345678',
-        favoriteCurrency: 'EUR'
+        favoriteCurrency: 'eur'
       })
     ).rejects.toThrow(customError)
   })
@@ -47,7 +47,7 @@ describe('service create user', () => {
       lastName: 'test',
       username: 'test',
       password: '12345678',
-      favoriteCurrency: 'EUR'
+      favoriteCurrency: 'eur'
     })
     expect(result).toBe(true)
   })

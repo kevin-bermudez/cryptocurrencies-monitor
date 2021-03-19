@@ -6,7 +6,9 @@ const validateSchemas = (schema, serviceLocator) => (req, res, next) => {
     stripUnknown: true
   }
   const customError = serviceLocator.get('exceptions.customError')
-  if (req.method === 'get') {
+
+  if (String(req.method).toLowerCase() === 'get') {
+    payload = req.query
   } else {
     payload = req.body
   }

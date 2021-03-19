@@ -1,4 +1,4 @@
-const addUserCryptoCurrencies = require('../../../src/services/users/addUserCryptoCurrencies')
+const addUserCryptoCurrencies = require('../../../src/services/cryptoCurrencies/addUserCryptoCurrencies')
 const serviceLocator = require('../../dependencyInjector')
 const customError = require('../../../src/exceptions/customError')
 const userCryptoCurrenciesFilterEmpty = require('../../mocks/userCryptoCurrenciesFIlterEmpty')
