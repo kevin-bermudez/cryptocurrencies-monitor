@@ -9,7 +9,7 @@
 const createUser = (router, serviceLocator) => {
   const addUserCryptoCurrencySchema = serviceLocator.get('api.schemaAddUserCryptoCurrency')
   router.post(
-    '/crypto-currencies',
+    '/',
     serviceLocator.get('api.validateAuthMiddleware')(serviceLocator),
     serviceLocator.get('api.validateSchemasMiddleware')(addUserCryptoCurrencySchema, serviceLocator),
     async (req, res, next) => {

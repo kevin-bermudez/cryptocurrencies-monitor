@@ -5,6 +5,7 @@ const manageToken = require('../../../utils/manageToken')
 const handleErrorsServices = require('../../../utils/handlerErrorsServices')
 const requestHttp = require('../../../utils/requestHttp')
 const getTokenWithHeaders = require('../../utils/getTokenWithHeaders')
+const favoriteCurrenciesEnum = require('../../../utils/enums/favoriteCurrencies')
 
 const utilsInjector = serviceLocator => {
   serviceLocator.register('utils.handleCryptText', handleCryptText)
@@ -14,6 +15,7 @@ const utilsInjector = serviceLocator => {
   serviceLocator.register('utils.handleErrorsServices', handleErrorsServices)
   serviceLocator.register('utils.requestHttp', requestHttp)
   serviceLocator.register('utils.getTokenWithHeaders', getTokenWithHeaders)
+  serviceLocator.register('utils.favoriteCurrenciesEnum', favoriteCurrenciesEnum)
 }
 
 module.exports = utilsInjector

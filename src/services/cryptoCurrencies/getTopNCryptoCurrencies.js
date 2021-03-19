@@ -8,7 +8,7 @@ const getCryptoCurrenciesTopN = async (
     if (limit > 25 || limit < 1) {
       throw new customError(
         serviceLocator.get('exceptions.codeErrors').PAYLOAD,
-        'The limit must be less than or equal to 25'
+        'The limit must be less than or equal to 25 and greater to 0'
       )
     }
 
@@ -24,12 +24,12 @@ const getCryptoCurrenciesTopN = async (
     )
 
     const orderedAnLimitedCryptoCurrencies = cryptoCurrenciesAllInformation
-      .sort((a, b) => (order === 'ASC' ? a - b : b - a))
-      .slice(0, 25)
+      .sort((a, b) => (order === 'ASC' ? a.price - b.price : b.price - a.price))
+      .slice(0, limit)
 
     const urlRequest = `${serviceLocator.get('config.keys').EXTERNAL_SERVICES.URL_GECKO}/simple/price`
     const params = {
-      vs_currency: serviceLocator.get('utils.favoriteCurrenciesEnum').join(','),
+      vs_currencies: serviceLocator.get('utils.favoriteCurrenciesEnum').join(','),
       ids: cryptoCurrencies.join(',')
     }
     const resultGecko = await serviceLocator.get('utils.requestHttp')(urlRequest, 'get', {

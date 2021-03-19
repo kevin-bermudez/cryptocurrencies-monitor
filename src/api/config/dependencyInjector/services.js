@@ -6,6 +6,7 @@ const getAllCryptoCurrencies = require('../../../services/cryptoCurrencies/getAl
 const getUser = require('../../../services/users/getUser')
 const getUserCryptocurrencies = require('../../../services/users/getUserCryptoCurrencies')
 const addUserCryptoCurrencies = require('../../../services/cryptoCurrencies/addUserCryptoCurrencies')
+const getTopNCryptoCurrencies = require('../../../services/cryptoCurrencies/getTopNCryptoCurrencies')
 
 const serviceInjector = serviceLocator => {
   serviceLocator.register('services.createUser', createUser)
@@ -16,6 +17,7 @@ const serviceInjector = serviceLocator => {
   serviceLocator.register('services.getAllCryptoCurrencies', getAllCryptoCurrencies)
   serviceLocator.register('services.getUserCryptocurrencies', getUserCryptocurrencies)
   serviceLocator.register('services.addUserCryptoCurrencies', addUserCryptoCurrencies)
+  serviceLocator.register('services.getTopNCryptoCurrencies', getTopNCryptoCurrencies)
 }
 
 module.exports = serviceInjector

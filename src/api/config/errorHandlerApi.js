@@ -1,4 +1,5 @@
 const errorHandler = serviceLocator => (error, req, res, next) => {
+  console.log(error)
   let status = 500
   let message = ''
   if (error.code === serviceLocator.get('exceptions.codeErrors').PAYLOAD) {

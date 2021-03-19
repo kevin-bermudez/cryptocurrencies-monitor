@@ -8,13 +8,14 @@ const getAllCryptocurrencies = async (serviceLocator, favoriteCurrency, ids = fa
       page: 1,
       sparkline: false
     }
-    const resultGecko = await serviceLocator.get('utils.requestHttp')(urlRequest, 'get', {
-      params
-    })
 
     if (ids) {
       params.ids = ids.join(',')
     }
+
+    const resultGecko = await serviceLocator.get('utils.requestHttp')(urlRequest, 'get', {
+      params
+    })
 
     const formattedCurrencies = resultGecko.data.map(currency => {
       const data = {
