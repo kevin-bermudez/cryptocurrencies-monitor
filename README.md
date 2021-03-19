@@ -11,7 +11,7 @@ En la máquina donde se vaya a correr el proyecto, se debe tener instalado
 
 ### Para crear una base de datos a partir del archivo docker-compose
 
-En una terminal y sobre el directorio database escriba el siguiente comando:
+En una terminal y sobre el directorio database escriba el siguiente comando, esto habilitará una base de datos mysql en el puerto 3307 de su localhost:
 
 ```console
 docker-compose up --build -d
@@ -23,7 +23,7 @@ docker-compose up --build -d
 
 ---
 
-Una vez esté en el directorio donde desea guardar el proyecot (un diretorio vacío)
+Una vez esté en el directorio donde desea guardar el proyecto (un diretorio vacío)
 
 ```console
 git clone https://github.com/kevindanielbermudez/cryptocurrencies-monitor.git .
